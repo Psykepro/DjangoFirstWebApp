@@ -1,4 +1,4 @@
-#!/home/koleca/Dev/trydjango1-11/bin/python
+#!/home/koleca/Dev/DjangoFirstWebApp/trydjango1-11/bin/python
 
 import sys
 import getopt
