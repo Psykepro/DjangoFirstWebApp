@@ -5,26 +5,12 @@ from django.views import View
 from django.views.generic import TemplateView
 # Create your views here.
 # Function based view
+from .models import RestaurantLocation
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(HomeView, self).get_context_data(*args, **kwargs)
-        num = None
-        some_list = [
-            random.randint(0, 10000000),
-            random.randint(0, 10000000),
-            random.randint(0, 10000000)
-        ]
-        conditional_bool_item = True
-        if conditional_bool_item:
-            num = random.randint(0, 10000000)
-        context = {
-                "num": num,
-                "some_list":some_list
-        }
-        print(context)
-        return context
-
-
+def restaurant_list_view(request):
+    template_name = 'restaurants/restaurants_list.html'
+    queryset = RestaurantLocation.objects.all()
+    context = {
+        'object_list': queryset
+    }
+    return render(request, template_name, context)
