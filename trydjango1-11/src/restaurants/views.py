@@ -1,12 +1,30 @@
 import random
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
-# Create your views here.
-# Function based view
+
+
+from .forms import RestaurantCreateForm
 from .models import RestaurantLocation
+
+def restaurant_create_view(request):
+
+    if request.method == "POST":
+        print("post data")
+        title = request.POST.get('title')
+        location = request.POST.get('location')
+        category = request.POST.get('category')
+        obj = RestaurantLocation.objects.create(
+            name=title,
+            location=location,
+            category=category
+            )
+        return HttpResponseRedirect("/restaurants/")
+    template_name = 'restaurants/form.html'
+    context = {}
+    return render(request, template_name, context)
 
 def restaurant_list_view(request):
     template_name = 'restaurants/restaurants_list.html'
