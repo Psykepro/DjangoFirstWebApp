@@ -11,7 +11,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from .forms import RestaurantCreateForm, RestaurantLocationCreateForm
 from .models import RestaurantLocation
 
-@login_required(login_url='/login/')
+@login_required()
 def restaurant_create_view(request):
     form = RestaurantLocationCreateForm(request.POST or None)
     errors = None
@@ -74,7 +74,7 @@ class RestaurantCreateView(LoginRequiredMixin,CreateView):
     form_class = RestaurantLocationCreateForm
     template_name = 'restaurants/form.html'
     success_url = '/restaurants/'
-    login_url = '/login/'
+    #login_url = '/login/'
     
     def form_valid(self, form):
         instance = form.save(commit=False)
