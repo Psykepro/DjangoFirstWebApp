@@ -6,8 +6,11 @@ from restaurants.models import RestaurantLocation
 # Create your models here.
 
 class Item(models.Model):
+    #associations
     user        = models.ForeignKey(settings.AUTH_USER_MODEL)
     restaurant  = models.ForeignKey(RestaurantLocation)
+
+    #items
     name        = models.CharField(max_length=120)
     contents    = models.TextField(help_text='Separate each item by comma')
     excludes    = models.TextField(blank=True, null=True, help_text='Separate each item by comma')
