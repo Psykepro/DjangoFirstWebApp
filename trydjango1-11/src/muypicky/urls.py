@@ -42,5 +42,5 @@ urlpatterns = [
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     url(r'^about/$', TemplateView.as_view(template_name = 'about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name = 'contact.html'), name='contact'), #(?P<id>\d+)/ regex for id
-    url(r'^password-reset/complete/$', PasswordResetCompleteView.as_view(), name='password_reset_complete')
+    url(r'^password-reset/complete/$', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]
