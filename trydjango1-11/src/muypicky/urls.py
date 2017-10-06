@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^password-reset/$', PasswordResetView.as_view(), name='password_reset'),
     url(r'^password-reset/done/$', PasswordResetDoneView.as_view(), name='password_reset_done'),
     url(r'^password-reset/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    url(r'^items/', include('menus.urls', namespace='menus')),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     url(r'^about/$', TemplateView.as_view(template_name = 'about.html'), name='about'),
     url(r'^contact/$', TemplateView.as_view(template_name = 'contact.html'), name='contact'), #(?P<id>\d+)/ regex for id
