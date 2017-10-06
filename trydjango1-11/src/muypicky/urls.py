@@ -25,8 +25,6 @@ from django.contrib.auth.views import (
 )
 
 from restaurants.views import (
-    restaurant_create_view,
-    restaurant_list_view,
     RestaurantListView,
     RestaurantDetailView,
     RestaurantCreateView,
