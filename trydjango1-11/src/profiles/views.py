@@ -24,9 +24,15 @@ class ProfileDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProfileDetailView, self).get_context_data(*args, **kwargs)
         print(context)
-        user = self.get_object()
+        user = context['user']
+        query = self.request.GET.get('q')
         items_exists = Item.objects.filter(user=user).exists()
+        
         qs = RestaurantLocation.objects.filter(owner=user)
+
+        if query:
+            qs = qs.search(query)
+            #qs = RestaurantLocation.objecs.search(query)
         if items_exists and qs.exists():
             context['locations'] = qs
         return context
