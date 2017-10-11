@@ -24,11 +24,7 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView
 )
 
-from restaurants.views import (
-    RestaurantListView,
-    RestaurantDetailView,
-    RestaurantCreateView,
-)
+from profiles.views import ProfileFollowToggle
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -36,6 +32,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^password-reset/$', PasswordResetView.as_view(), name='password_reset'),
     url(r'^password-reset/done/$', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    url(r'^profile-follow/$', ProfileFollowToggle.as_view(), name='follow'),
     url(r'^password-reset/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^u/', include('profiles.urls', namespace='profile')),
     url(r'^items/', include('menus.urls', namespace='menus')),
